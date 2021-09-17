@@ -3,6 +3,8 @@ import pandas as pd
 import pycountry
 import urllib.request
 
+#Загрузка данных института Хопкинса (При каждом использовании данные обновляются). Сохраняются в файле Данные_COVID19.csv
+
 print("Start Program ... ")
 try:
     print("Start Downloading file ... ")
@@ -13,6 +15,8 @@ try:
 except Exception as e:
     print("Downloading file error: " + str(e))    
     
+##Форматирование данных
+
 df_confirm = pd.read_csv('Данные_COVID19.csv')  
 df_confirm = df_confirm.drop(columns=['Province/State','Lat', 'Long'])
 df_confirm = df_confirm.groupby('Country/Region').agg('sum')
@@ -28,6 +32,8 @@ df_confirm['Страна'] = df_confirm.index
 df_confirm['Сокр'] = df_confirm['Страна'].apply(get_country_code)
 
 df_long = pd.melt(df_confirm, id_vars=['Страна', 'Сокр'], value_vars=date_list, var_name ='Дата', value_name = 'Инфицированные')    
+
+#Генерация карты
 
 fig = px.choropleth(df_long,                            
                      locations="Сокр",
