@@ -15,7 +15,7 @@ try:
 except Exception as e:
     print("Downloading file error: " + str(e))    
     
-##Форматирование данных
+#Трансформация данных
 
 df_confirm = pd.read_csv('Данные_COVID19.csv')  
 df_confirm = df_confirm.drop(columns=['Province/State','Lat', 'Long'])
