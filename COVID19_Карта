@@ -8,7 +8,7 @@ import urllib.request
 print("Start Program ... ")
 try:
     print("Start Downloading file ... ")
-    url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv' #url
+    url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv' 
     output= 'Данные_COVID19.csv' 
     urllib.request.urlretrieve(url, output)
     print(f"File {output} -- saved!")
